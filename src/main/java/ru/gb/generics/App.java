@@ -27,10 +27,6 @@ public class App {
     }
 
     public <T> ArrayList<T> arrayToList (T[] param) {
-        ArrayList<T> arrayList = new ArrayList<>();
-        for (int i = 0; i < param.length; i++) {
-            arrayList.add(param[i]);
-        }
-        return arrayList;
+        return new ArrayList<>(Arrays.asList(param));
     }
 }
