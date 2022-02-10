@@ -2,6 +2,7 @@ package ru.gb.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -16,6 +17,36 @@ public class App {
 
         System.out.println(app.arrayToList(intArray2));
         System.out.println(app.arrayToList(stringArray2));
+        System.out.println();
+
+        List<Fruit> fruitList = new ArrayList<Fruit>();
+        fruitList.add(new Apple(1.0f));
+        fruitList.add(new Apple(1.0f));
+        fruitList.add(new Apple(1.0f));
+        fruitList.add(new Orange(1.5f));
+        fruitList.add(new Orange(1.5f));
+        fruitList.add(new Orange(1.5f));
+
+        Box<Apple> appleBox = Box.create();
+        Box<Orange> orangeBox = Box.create();
+        appleBox.put(new Apple(1.0f));
+        appleBox.put(new Apple(1.0f));
+        appleBox.put(new Apple(1.0f));
+        appleBox.put(new Apple(1.0f));
+        appleBox.put(new Apple(1.0f));
+        System.out.println(appleBox.getWeight());
+
+        orangeBox.put(new Orange(1.5f));
+        orangeBox.put(new Orange(1.5f));
+        orangeBox.put(new Orange(1.5f));
+        System.out.println(orangeBox.getWeight());
+
+        Box<Apple> newAppleBox = Box.create();
+        appleBox.shift(newAppleBox);
+        System.out.println(appleBox.getWeight());
+        System.out.println(newAppleBox.getWeight());
+
+        System.out.println(newAppleBox.compareTo(orangeBox));
     }
 
     public <T> T[] changePlace(T[] param, int firstPosition, int secondPosition) {
@@ -26,7 +57,11 @@ public class App {
         return param;
     }
 
-    public <T> ArrayList<T> arrayToList (T[] param) {
+    public <T> ArrayList<T> arrayToList(T[] param) {
+
         return new ArrayList<>(Arrays.asList(param));
     }
+
+
 }
+
